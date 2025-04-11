@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <h1>Password Manager</h1>
+
+    <input type="text" id="app" placeholder="Application">
+    <input type="text" id="username" placeholder="Username">
+    <input type="text" id="password" placeholder="Password" oninput="checkStrength()">
+    <div id="strength" style="margin: 5px 0; font-weight: bold;"></div>
+
+
+    <button onclick="generatePassword()">Generate Password</button>
+    <button onclick="savePassword()">Save</button>
+    <button onclick="exportPasswords()">Export as JSON</button>
+
+
+    <script src="script.js"></script>
+</body>
+</html>
