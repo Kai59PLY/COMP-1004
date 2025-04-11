@@ -1,7 +1,7 @@
 ﻿let passwords = JSON.parse(localStorage.getItem('passwords')) || [];
 
 function generatePassword() {
-    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()";
+    const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()"; //generating ranodm password through selection of this character set
     let pass = "";
     for (let i = 0; i < 12; i++) {
         pass += charset.charAt(Math.floor(Math.random() * charset.length));
@@ -9,7 +9,7 @@ function generatePassword() {
     document.getElementById('password').value = pass;
 }
 
-function savePassword() {
+function savePassword() { // saving password to localstorage possibly update in future for better sec
     const app = document.getElementById('app').value.trim();
     const username = document.getElementById('username').value.trim();
     const password = document.getElementById('password').value.trim();
@@ -26,7 +26,7 @@ function savePassword() {
     document.getElementById('username').value = '';
     document.getElementById('password').value = '';
     if (!/[!@#$%^&*()]/.test(password)) {
-        alert("Password must include at least one special character (!@#$%^&*()).");
+        alert("password must include at least one special character (!@#$%^&*())."); //special characters required for security 
         return;
     }
 
@@ -34,7 +34,7 @@ function savePassword() {
 
 function exportPasswords() {
     const json = JSON.stringify(passwords, null, 2);
-    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(json);
+    const dataUri = 'data:application/json;charset=utf-8,' + encodeURIComponent(json); // export password to json, download locally
 
     const a = document.createElement('a');
     a.href = dataUri;
@@ -63,7 +63,7 @@ function checkStrength() {
     } else if (hasLower && hasUpper && hasNumber && hasSpecial && password.length >= 10) {
         strengthDisplay.textContent = 'Strong';
     } else {
-        strengthDisplay.textContent = 'Medium';
+        strengthDisplay.textContent = 'Medium'; //password strength feature, possibl add colour coding 
     }
 }
 
